@@ -24,14 +24,16 @@ import (
 )
 
 const (
-	DefaultDriver                   = "nvidia"
-	DefaultQueryPort                = 5678
-	DefaultSamplePeriod             = 1
-	DefaultVirtualManagerPath       = "/etc/gpu-manager/vm"
-	DefaultAllocationCheckPeriod    = 30
-	DefaultCheckpointPath           = "/etc/gpu-manager/checkpoint"
-	DefaultContainerRuntimeEndpoint = "/var/run/dockershim.sock"
-	DefaultCgroupDriver             = "cgroupfs"
+	DefaultDriver                = "nvidia"
+	DefaultQueryPort             = 5678
+	DefaultSamplePeriod          = 1
+	DefaultVirtualManagerPath    = "/etc/gpu-manager/vm"
+	DefaultAllocationCheckPeriod = 30
+	DefaultCheckpointPath        = "/etc/gpu-manager/checkpoint"
+	// DefaultContainerRuntimeEndpoint = "/var/run/dockershim.sock"
+	DefaultContainerRuntimeEndpoint = "/run/containerd/containerd.sock"
+	// DefaultCgroupDriver             = "cgroupfs"
+	DefaultCgroupDriver = "systemd"
 )
 
 // Options contains plugin information

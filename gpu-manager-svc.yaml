@@ -16,3 +16,16 @@ spec:
       targetPort: 5678
   selector:
     name: gpu-manager-ds
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gpu-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: gpu-manager
+  namespace: kube-system

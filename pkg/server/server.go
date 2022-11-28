@@ -40,7 +40,7 @@ import (
 	// Register allocator controller
 	_ "tkestack.io/gpu-manager/pkg/services/allocator/register"
 	"tkestack.io/gpu-manager/pkg/services/display"
-	"tkestack.io/gpu-manager/pkg/services/virtual-manager"
+	vitrual_manager "tkestack.io/gpu-manager/pkg/services/virtual-manager"
 	"tkestack.io/gpu-manager/pkg/services/volume"
 	"tkestack.io/gpu-manager/pkg/services/watchdog"
 	"tkestack.io/gpu-manager/pkg/types"
@@ -71,7 +71,7 @@ type managerImpl struct {
 	srv          *grpc.Server
 }
 
-//NewManager creates and returns a new managerImpl struct
+// NewManager creates and returns a new managerImpl struct
 func NewManager(cfg *config.Config) Manager {
 	manager := &managerImpl{
 		config:       cfg,
@@ -168,7 +168,7 @@ func (m *managerImpl) Run() error {
 	responseManager := response.NewResponseManager()
 	if err := responseManager.LoadFromFile(m.config.DevicePluginPath); err != nil {
 		klog.Errorf("can't load container response data, %+#v", err)
-		return err
+		// return err
 	}
 
 	m.virtualManager = vitrual_manager.NewVirtualManager(m.config, containerRuntimeManager, responseManager)
